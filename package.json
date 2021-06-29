@@ -1,14 +1,15 @@
 {
-  "name": "geolonia-midnight",
+  "name": "geolonia-butter",
   "version": "0.1.0",
-  "description": "3D style based on default style for [Geolonia](https://geolonia.com/).",
+  "description": "Yellow and black style based on default style for [Geolonia](https://geolonia.com/).",
   "main": "style.json",
   "scripts": {
+    "watch": "node bin/watch.js",
     "start": "/usr/local/bin/maputnik --watch --file ./style.json"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/geolonia/midnight.git"
+    "url": "git+https://github.com/geolonia/butter.git"
   },
   "author": {
     "name": "Geolonia Inc.",
@@ -16,7 +17,11 @@
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/geolonia/midnight/issues"
+    "url": "https://github.com/geolonia/butter/issues"
   },
-  "homepage": "https://github.com/geolonia/midnight#readme"
+  "homepage": "https://github.com/geolonia/butter#readme",
+  "devDependencies": {
+    "chokidar": "^3.5.2",
+    "js-yaml": "^4.1.0"
+  }
 }

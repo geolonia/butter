@@ -1,9 +1,9 @@
-# Midnight
+# butter
 
 This is a Mapbox GL JS based style for [Geolonia](https://geolonia.com/).
 
-* [DEMO](https://geolonia.github.io/preview/#geolonia/midnight)
-* [DEMO on editor](https://editor.geolonia.com/?style=https://raw.githubusercontent.com/geolonia/midnight/master/style.json)
+- [DEMO](https://geolonia.github.io/preview/#geolonia/butter)
+- [DEMO on editor](https://editor.geolonia.com/?style=https://raw.githubusercontent.com/geolonia/butter/master/style.json)
 
 ## Development
 
