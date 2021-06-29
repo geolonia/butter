@@ -23,3 +23,10 @@ maputnik --watch --file ./style.json
 ```
 
 Then access the Maputnik editor GUI at [localhost:8000](https://localhost:8000/).
+
+### Write with YAML
+
+```shell
+$ yarn
+$ npm start
+```
