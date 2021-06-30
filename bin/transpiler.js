@@ -5,7 +5,7 @@ const jsYaml = require("js-yaml");
  * @param {string} key
  * @param {any} value
  * @param {object} parent
- * @returns
+ * @returns value
  */
 const defaultWalker = (key, value, parent) => value;
 

@@ -12,7 +12,6 @@ const warn = (message) => process.stdout.write(`${WARN()} ${message}\n`);
 const ymlPath = path.resolve(__dirname, "..", "style.yml");
 const jsonPath = path.resolve(__dirname, "..", "style.json");
 
-const watcher = chokidar.watch(ymlPath);
 const walk = (key, value, parent) => {
   if (key.startsWith("__")) {
     delete parent[key];
@@ -21,6 +20,7 @@ const walk = (key, value, parent) => {
   }
 };
 
+const watcher = chokidar.watch(ymlPath);
 watcher
   .on("add", (path) => notice(`${chalk.green(path)} has been added.`))
   .on("change", (path) => {

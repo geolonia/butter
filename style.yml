@@ -39,9 +39,9 @@ __icons:
   - - image
     - circle-11
 
-
-version: 8
+id: geolonia-butter
 name: Geolonia butter
+version: 8
 metadata: {}
 sources:
   geolonia:
@@ -1607,7 +1607,7 @@ layers:
     text-transform: uppercase
     text-max-width: 6.25
   paint:
-    <<: &text_color_base
+    <<: *text_color_base
     text-halo-blur: 1
     text-halo-width: 2
 - id: place-continent
@@ -1624,7 +1624,6 @@ layers:
     text-max-width: 6.25
     text-transform: uppercase
   paint:
-    <<: &text_color_base
+    <<: *text_color_base
     text-halo-blur: 1
     text-halo-width: 2
-id: geolonia-butter

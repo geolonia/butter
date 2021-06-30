@@ -1,6 +1,7 @@
 {
-  "version": 8,
+  "id": "geolonia-butter",
   "name": "Geolonia butter",
+  "version": 8,
   "metadata": {},
   "sources": {
     "geolonia": {
@@ -2636,10 +2637,10 @@
         "text-max-width": 6.25
       },
       "paint": {
-        "text-halo-blur": 1,
         "text-color": "#FFFFFF",
-        "text-halo-width": 2,
-        "text-halo-color": "#000000"
+        "text-halo-color": "#000000",
+        "text-halo-blur": 1,
+        "text-halo-width": 2
       }
     },
     {
@@ -2664,12 +2665,11 @@
         "text-transform": "uppercase"
       },
       "paint": {
-        "text-halo-blur": 1,
         "text-color": "#FFFFFF",
-        "text-halo-width": 2,
-        "text-halo-color": "#000000"
+        "text-halo-color": "#000000",
+        "text-halo-blur": 1,
+        "text-halo-width": 2
       }
     }
-  ],
-  "id": "geolonia-butter"
+  ]
 }
