@@ -15,9 +15,9 @@ __filters:
 
 __colors:
   - &black_primary "rgba(1, 17, 44, 1)"
-  - &yellow_primary "rgba(255, 255, 0, 0.7)"
-  - &yellow_secondary "rgba(255, 255, 0, 0.2)"
-  - &black_secondary "rgba(46, 46, 46, 0.56)"
+  - &yellow_primary "rgba(187, 187, 0, 1)"
+  - &yellow_secondary "rgba(255, 255, 0, 0.5)"
+  - &black_secondary "rgba(46, 46, 46, 0.5)"
 
 __typography:
   base: &text_layout_base
