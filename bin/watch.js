@@ -27,10 +27,7 @@ watcher
     try {
       const yaml = fs.readFileSync(ymlPath, "utf-8");
       const transpiler = new Transpiler(yaml, walk);
-      transpiler.parse();
-      transpiler.traverse();
-      transpiler.generate();
-      const json = transpiler.toJSON();
+      const json = transpiler.transpile();
       fs.writeFileSync(jsonPath, json);
       notice(`${chalk.green(path)} -> ${chalk.green(jsonPath)}.`);
     } catch (error) {
