@@ -15,9 +15,9 @@ __filters:
 
 __colors:
   - &yellow_primary "#ffdc00"
-  - &black_primary "#000000"
-  - &other_area_color "rgba(0, 0, 0, 0.3)"
-  - &other_line_color "rgba(0, 0, 0, 0.5)"
+  - &black_primary "#171313"
+  - &other_area_color "rgba(244, 255, 75, 0.91)"
+  - &other_line_color "rgba(23, 19, 19, 0.5)"
 
 __typography:
   - &text_layout_base
@@ -534,7 +534,7 @@ layers:
     line-join: round
     visibility: visible
   paint:
-    line-color: rgba(0, 0, 0, 1)
+    line-color: *black_primary
     line-width:
       base: *line_width
       stops:
