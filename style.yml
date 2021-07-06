@@ -16,6 +16,7 @@ __filters:
 __colors:
   - &yellow_primary "#ffdc00"
   - &black_primary "#171313"
+  - &white_primary "#ffffff"
   - &other_area_color "rgba(244, 255, 75, 0.91)"
   - &other_line_color "rgba(23, 19, 19, 0.5)"
 
@@ -25,9 +26,10 @@ __typography:
     text-size: 14
     text-field: "{name}"
   - &text_color_base
-    text-color: *yellow_primary
+    text-color: *white_primary
     text-halo-color: *black_primary
-    text-halo-width: 10
+    text-halo-blur: 0.8
+    text-halo-width: 1
 
 __lines:
   - &line_width 1.5
