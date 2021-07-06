@@ -24,7 +24,6 @@ __typography:
     text-font: ["Noto Sans Regular"]
     text-size: 14
     text-field: "{name}"
-    visibility: visible
   - &text_color_base
     text-color: *yellow_primary
     text-halo-color: *black_primary
@@ -33,7 +32,6 @@ __typography:
 __lines:
   - &line_width 1.5
   - &line_width_tunnel 1.7
-     
 
 __icons:
   - &icon_color_base
@@ -931,6 +929,8 @@ layers:
   source: geolonia
   source-layer: building
   minzoom: 15
+  layout:
+      visibility: none
   paint:
     fill-color: *other_area_color
     fill-antialias: true
@@ -939,6 +939,8 @@ layers:
   source: geolonia
   source-layer: building
   minzoom: 15
+  layout:
+    visibility: none
   paint:
     line-color: *black_primary
     line-width: *line_width

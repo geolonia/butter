@@ -1878,7 +1878,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 5,
         "text-rotation-alignment": "map",
         "symbol-placement": "line",
@@ -1907,7 +1906,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 5,
         "text-rotation-alignment": "map",
         "symbol-placement": "line",
@@ -1944,7 +1942,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 5,
         "text-rotation-alignment": "map",
         "symbol-placement": "point",
@@ -1992,7 +1989,6 @@
           ]
         },
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 5,
         "text-rotation-alignment": "map",
         "symbol-placement": "point",
@@ -2011,6 +2007,9 @@
       "source": "geolonia",
       "source-layer": "building",
       "minzoom": 15,
+      "layout": {
+        "visibility": "none"
+      },
       "paint": {
         "fill-color": "rgba(0, 0, 0, 0.3)",
         "fill-antialias": true
@@ -2022,6 +2021,9 @@
       "source": "geolonia",
       "source-layer": "building",
       "minzoom": 15,
+      "layout": {
+        "visibility": "none"
+      },
       "paint": {
         "line-color": "#000000",
         "line-width": 1.5
@@ -2056,7 +2058,6 @@
         ],
         "text-size": 12,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-padding": 2,
         "text-anchor": "top",
         "icon-image": [
@@ -2119,7 +2120,6 @@
         ],
         "text-size": 12,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-anchor": "top",
         "icon-image": [
           "coalesce",
@@ -2268,7 +2268,6 @@
         ],
         "text-size": 12,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-padding": 2,
         "text-anchor": "top",
         "icon-image": "airport-11",
@@ -2314,7 +2313,6 @@
           ]
         },
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 8
       },
       "paint": {
@@ -2339,7 +2337,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 8
       },
       "paint": {
@@ -2375,7 +2372,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 8
       },
       "paint": {
@@ -2408,7 +2404,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 8,
         "icon-image": "star-11",
         "text-offset": [
@@ -2454,7 +2449,6 @@
           ]
         },
         "text-field": "{name}",
-        "visibility": "visible",
         "text-transform": "uppercase",
         "text-max-width": 6.25
       },
@@ -2481,7 +2475,6 @@
         ],
         "text-size": 14,
         "text-field": "{name}",
-        "visibility": "visible",
         "text-max-width": 6.25,
         "text-transform": "uppercase"
       },
