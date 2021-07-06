@@ -130,7 +130,7 @@
         "railway"
       ],
       "paint": {
-        "fill-color": "rgba(255, 255, 255, 0.1)"
+        "fill-color": "rgba(244, 255, 75, 0.91)"
       }
     },
     {
@@ -319,7 +319,7 @@
         ]
       ],
       "paint": {
-        "line-color": "rgba(85, 85, 85, 0.4)",
+        "line-color": "rgba(23, 19, 19, 0.5)",
         "line-dasharray": [
           1.5,
           0.75
@@ -404,7 +404,7 @@
         "line-join": "round"
       },
       "paint": {
-        "line-color": "rgba(85, 85, 85, 0.4)",
+        "line-color": "rgba(23, 19, 19, 0.5)",
         "line-opacity": 1,
         "line-width": {
           "base": 1.5,

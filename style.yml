@@ -17,8 +17,8 @@ __colors:
   - &yellow_primary "#ffdc00"
   - &black_primary "#171313"
   - &white_primary "#ffffff"
-  - &other_area_color "rgba(244, 255, 75, 0.91)"
-  - &other_line_color "rgba(23, 19, 19, 0.5)"
+  - &yellow_secondary "rgba(244, 255, 75, 0.91)"
+  - &black_secondary "rgba(23, 19, 19, 0.5)"
 
 __typography:
   - &text_layout_base
@@ -72,7 +72,7 @@ layers:
   - *isPolygon
   - ["==", class, commercial]
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
 - id: landuse-industrial
   type: fill
   source: geolonia
@@ -82,42 +82,42 @@ layers:
   - *isPolygon
   - ["==", class, industrial]
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
 - id: park
   type: fill
   source: geolonia
   source-layer: park
   filter: *isPolygon
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
 - id: landuse-cemetery
   type: fill
   source: geolonia
   source-layer: landuse
   filter: ["==", class, cemetery]
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
 - id: landuse-hospital
   type: fill
   source: geolonia
   source-layer: landuse
   filter: ["==", class, hospital]
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
 - id: landuse-school
   type: fill
   source: geolonia
   source-layer: landuse
   filter: ["==", class, school]
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
 - id: landuse-railway
   type: fill
   source: geolonia
   source-layer: landuse
   filter: ["==", class, railway]
   paint:
-    fill-color: rgba(255, 255, 255, 0.1)
+    fill-color: *yellow_secondary
 - id: waterway_tunnel
   type: line
   source: geolonia
@@ -181,7 +181,7 @@ layers:
   - ["==", brunnel, tunnel]
   - ["==", class, rail]
   paint:
-    line-color: *other_line_color
+    line-color: *black_secondary
     line-opacity: 1
     line-width:
       base: *line_width_tunnel
@@ -202,7 +202,7 @@ layers:
     - ["==", brunnel, tunnel]
     - ["==", class, path]
   paint:
-    line-color: rgba(85, 85, 85, 0.4)
+    line-color: *black_secondary
     line-dasharray: [1.5, 0.75]
     line-width:
       base: *line_width
@@ -238,7 +238,7 @@ layers:
   layout:
     line-join: round
   paint:
-    line-color: rgba(85, 85, 85, 0.4)
+    line-color: *black_secondary
     line-opacity: 1
     line-width:
       base: *line_width
@@ -257,7 +257,7 @@ layers:
   layout:
     line-join: round
   paint:
-    line-color: *other_line_color
+    line-color: *black_secondary
     line-width:
       base: *line_width
       stops:
@@ -275,7 +275,7 @@ layers:
   layout:
     line-join: round
   paint:
-    line-color: *other_line_color
+    line-color: *black_secondary
     line-width:
       base: *line_width
       stops:
@@ -294,7 +294,7 @@ layers:
     line-join: round
     visibility: visible
   paint:
-    line-color: *other_line_color
+    line-color: *black_secondary
     line-width:
       base: *line_width
       stops:
@@ -390,7 +390,7 @@ layers:
   layout:
     visibility: visible
   paint:
-    fill-color: *other_area_color
+    fill-color: *yellow_secondary
     fill-opacity: 0.9
     fill-antialias: false
 - id: highway-path
