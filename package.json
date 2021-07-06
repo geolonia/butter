@@ -4,6 +4,7 @@
   "description": "Yellow and black style based on default style for [Geolonia](https://geolonia.com/).",
   "main": "style.json",
   "scripts": {
+    "build": "webpack",
     "watch": "node bin/watch.js",
     "start": "/usr/local/bin/maputnik --watch --file ./style.json"
   },
@@ -23,6 +24,8 @@
   "devDependencies": {
     "chalk": "^4.1.1",
     "chokidar": "^3.5.2",
-    "js-yaml": "^4.1.0"
+    "js-yaml": "^4.1.0",
+    "webpack": "^5.42.1",
+    "webpack-cli": "^4.7.2"
   }
 }

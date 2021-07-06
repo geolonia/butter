@@ -77,3 +77,4 @@ class Transpiler {
 }
 
 module.exports.Transpiler = Transpiler;
+globalThis.Transpiler = Transpiler;
