@@ -32,6 +32,14 @@ __typography:
 __lines:
   - &line_width 1.5
   - &line_width_tunnel 1.7
+  - &railway_stops
+    - [10, 3]
+    - [18, 5]
+    - [22, 19]
+  - &railway_casing_stops
+    - [10, 4]
+    - [18, 9]
+    - [22, 21]
 
 __icons:
   - &icon_color_base
@@ -187,11 +195,7 @@ layers:
     line-opacity: 1
     line-width:
       base: *line_width_tunnel
-      stops:
-      - [10, 1]
-      - [18, 4]
-      - [22, 18]
-    line-dasharray: [6, 4]
+      stops: *railway_stops
 - id: tunnel-path
   type: line
   source: geolonia
@@ -792,7 +796,7 @@ layers:
       - [6.5, 0]
       - [7, 0.5]
       - [20, 18]
-- id: railway
+- id: railway-casing
   type: line
   source: geolonia
   source-layer: transportation
@@ -801,13 +805,10 @@ layers:
   - ["==", class, rail]
   - ["!in", brunnel, tunnel]
   paint:
-    line-color: *black_primary
+    line-color: *yellow_primary
     line-width:
-      stops:
-      - [10, 3.2]
-      - [18, 8]
-      - [22, 20]
-- id: railway-hatching
+      stops: *railway_casing_stops
+- id: railway
   type: line
   source: geolonia
   source-layer: transportation
@@ -818,13 +819,9 @@ layers:
   layout:
     visibility: visible
   paint:
-    line-color: *yellow_primary
-    line-dasharray: [6, 4]
+    line-color: *black_primary
     line-width:
-      stops:
-      - [10, 2]
-      - [18, 4]
-      - [22, 18]
+      stops: *railway_stops
 - id: cablecar
   type: line
   source: geolonia
