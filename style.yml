@@ -51,6 +51,12 @@ name: Geolonia butter
 version: 8
 metadata: {}
 sources:
+  oceanus:
+    type: vector
+    url: https://tileserver.geolonia.com/oceanus/tiles.json?key=YOUR-API-KEY
+  geolonia-water:
+    type: vector
+    url: https://tileserver.geolonia.com/water/tiles.json?key=YOUR-API-KEY
   geolonia:
     type: vector
     url: https://api.geolonia.com/v1/sources?key=YOUR-API-KEY
@@ -61,6 +67,12 @@ layers:
   type: background
   paint:
     background-color: *yellow_primary
+- id: gl-water
+  type: fill
+  source: geolonia-water
+  source-layer: water
+  paint:
+    fill-color: *black_primary
 - id: landuse-commercial
   type: fill
   source: geolonia
@@ -162,14 +174,6 @@ layers:
       stops:
       - [6, [2, 0]]
       - [8, [0, 0]]
-- id: water
-  type: fill
-  source: geolonia
-  source-layer: water
-  layout:
-    visibility: visible
-  paint:
-    fill-color: *black_primary
 - id: tunnel-railway
   type: line
   source: geolonia

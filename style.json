@@ -4,6 +4,14 @@
   "version": 8,
   "metadata": {},
   "sources": {
+    "oceanus": {
+      "type": "vector",
+      "url": "https://tileserver.geolonia.com/oceanus/tiles.json?key=YOUR-API-KEY"
+    },
+    "geolonia-water": {
+      "type": "vector",
+      "url": "https://tileserver.geolonia.com/water/tiles.json?key=YOUR-API-KEY"
+    },
     "geolonia": {
       "type": "vector",
       "url": "https://api.geolonia.com/v1/sources?key=YOUR-API-KEY"
@@ -17,6 +25,15 @@
       "type": "background",
       "paint": {
         "background-color": "#ffdc00"
+      }
+    },
+    {
+      "id": "gl-water",
+      "type": "fill",
+      "source": "geolonia-water",
+      "source-layer": "water",
+      "paint": {
+        "fill-color": "#000000"
       }
     },
     {
@@ -234,18 +251,6 @@
             ]
           ]
         }
-      }
-    },
-    {
-      "id": "water",
-      "type": "fill",
-      "source": "geolonia",
-      "source-layer": "water",
-      "layout": {
-        "visibility": "visible"
-      },
-      "paint": {
-        "fill-color": "#000000"
       }
     },
     {
@@ -2055,6 +2060,76 @@
           0.6
         ],
         "text-max-width": 9
+      },
+      "paint": {
+        "text-color": "#ffdc00",
+        "text-halo-color": "#000000",
+        "text-halo-width": 10
+      }
+    },
+    {
+      "id": "oc-waterway-name-ja",
+      "type": "symbol",
+      "source": "oceanus",
+      "source-layer": "oc-waterway",
+      "minzoom": 6,
+      "maxzoom": 8,
+      "filter": [
+        "all",
+        [
+          "==",
+          "$type",
+          "LineString"
+        ],
+        [
+          "has",
+          "name"
+        ],
+        [
+          "has",
+          "jflag"
+        ]
+      ],
+      "layout": {
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-size": 14,
+        "text-field": "{name}"
+      },
+      "paint": {
+        "text-color": "#ffdc00",
+        "text-halo-color": "#000000",
+        "text-halo-width": 10
+      }
+    },
+    {
+      "id": "oc-waterway-name",
+      "type": "symbol",
+      "source": "oceanus",
+      "source-layer": "oc-waterway",
+      "minzoom": 6,
+      "filter": [
+        "all",
+        [
+          "has",
+          "name"
+        ],
+        [
+          "==",
+          [
+            "has",
+            "jflag"
+          ],
+          false
+        ]
+      ],
+      "layout": {
+        "text-font": [
+          "Noto Sans Regular"
+        ],
+        "text-size": 14,
+        "text-field": "{name}"
       },
       "paint": {
         "text-color": "#ffdc00",
