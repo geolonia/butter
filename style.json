@@ -277,6 +277,29 @@
       }
     },
     {
+      "id": "water-river-lake-ja",
+      "type": "fill",
+      "source": "geolonia",
+      "source-layer": "water",
+      "filter": [
+        "all",
+        [
+          "==",
+          [
+            "get",
+            "class"
+          ],
+          "lake"
+        ]
+      ],
+      "layout": {
+        "visibility": "visible"
+      },
+      "paint": {
+        "fill-color": "#000000"
+      }
+    },
+    {
       "id": "oc-highway-outer-ja",
       "type": "line",
       "source": "oceanus",
@@ -2810,15 +2833,24 @@
     },
     {
       "id": "building",
-      "type": "fill",
+      "type": "line",
       "source": "geolonia",
       "source-layer": "building",
       "minzoom": 15,
       "paint": {
-        "fill-opacity": 1,
-        "fill-color": "#ffdc00",
-        "fill-outline-color": "#000000",
-        "fill-antialias": true
+        "line-color": "#000000",
+        "line-width": {
+          "stops": [
+            [
+              15,
+              1
+            ],
+            [
+              22,
+              3
+            ]
+          ]
+        }
       }
     },
     {

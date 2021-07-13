@@ -17,7 +17,6 @@ __colors:
   - &yellow_primary '#ffdc00'
   - &black_primary '#000000'
   - &other_area_color rgba(0, 0, 0, 0)
-  - &building_color rgba(0, 0, 0, 0.5)
   - &other_line_color rgba(0, 0, 0, 0.5)
 
 __typography:
@@ -189,6 +188,21 @@ layers:
     - all
     - [==, [get, class], lakes]
     - [==, [has, jflag], false]
+  paint:
+    fill-color: *black_primary
+
+- id: water-river-lake-ja
+  type: fill
+  source: geolonia
+  source-layer: water
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - lake
+  layout:
+    visibility: visible
   paint:
     fill-color: *black_primary
 
@@ -1359,15 +1373,16 @@ layers:
     <<: *text_color_base
 
 - id: building
-  type: fill
+  type: line
   source: geolonia
   source-layer: building
   minzoom: 15
   paint:
-    fill-opacity: 1
-    fill-color: *yellow_primary
-    fill-outline-color: *black_primary
-    fill-antialias: true
+    line-color: *black_primary
+    line-width:
+      stops:
+        - [15, 1]
+        - [22, 3]
 
 - id: poi
   type: symbol
