@@ -1,29 +1,29 @@
 ---
 __filters:
   - &isPolygon
-    - "=="
+    - ==
     - $type
     - Polygon
   - &isLineString
-    - "=="
-    - "$type"
+    - ==
+    - $type
     - LineString
   - &isPoint
-    - "=="
-    - "$type"
+    - ==
+    - $type
     - Point
 
 __colors:
-  - &yellow_primary "#ffdc00"
-  - &black_primary "#000000"
-  - &other_area_color "rgba(0, 0, 0, 0.3)"
-  - &other_line_color "rgba(0, 0, 0, 0.5)"
+  - &yellow_primary '#ffdc00'
+  - &black_primary '#000000'
+  - &other_area_color rgba(0, 0, 0, 0.3)
+  - &other_line_color rgba(0, 0, 0, 0.5)
 
 __typography:
   - &text_layout_base
-    text-font: ["Noto Sans Regular"]
+    text-font: ['Noto Sans Regular']
     text-size: 14
-    text-field: "{name}"
+    text-field: '{name}'
   - &text_color_base
     text-color: *yellow_primary
     text-halo-color: *black_primary
@@ -50,7 +50,7 @@ __icons:
     - - image
       - - concat
         - [get, class]
-        - "-11"
+        - '-11'
     - - image
       - circle-11
 
@@ -67,7 +67,7 @@ sources:
     url: https://tileserver.geolonia.com/water/tiles.json?key=YOUR-API-KEY
   geolonia:
     type: vector
-    url: https://api.geolonia.com/v1/sources?key=YOUR-API-KEY
+    url: https://tileserver.geolonia.com/v2/tiles.json?key=YOUR-API-KEY
 sprite: https://sprites.geolonia.com/basic
 glyphs: https://glyphs.geolonia.com/{fontstack}/{range}.pbf
 layers:
@@ -81,6 +81,481 @@ layers:
   source-layer: water
   paint:
     fill-color: *black_primary
+- id: oc-wayerway-river-ja
+  type: line
+  source: oceanus
+  source-layer: oc-waterway
+  minzoom: 4
+  maxzoom: 8
+  filter:
+    - all
+    - [==, [get, class], river]
+    - ['!=', [get, brunnel], tunnel]
+    - [has, jflag]
+  layout:
+    line-cap: round
+  paint:
+    line-color: *black_primary
+    line-width: [
+      "interpolate",
+      [exponential, 1.2],
+      [zoom],
+      10,
+      0.8,
+      20,
+      6
+    ]
+- id: oc-waterway-river
+  type: line
+  source: oceanus
+  source-layer: oc-waterway
+  minzoom: 4
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - river
+    - - '!='
+      - - get
+        - brunnel
+      - tunnel
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    line-cap: round
+  paint:
+    line-color: *black_primary
+    line-width:
+      - interpolate
+      - - exponential
+        - 1.2
+      - - zoom
+      - 10
+      - 0.8
+      - 20
+      - 6 
+- id: oc-waterway-name-ja
+  type: symbol
+  source: oceanus
+  source-layer: oc-waterway
+  minzoom: 6
+  maxzoom: 8
+  filter:
+    - all
+    - - ==
+      - $type
+      - LineString
+    - - has
+      - name
+    - - has
+      - jflag
+  layout:
+    <<: *text_layout_base
+    text-max-width: 5
+    text-rotation-alignment: map
+    symbol-placement: line
+    symbol-spacing: 350
+    text-letter-spacing: 0.2
+  paint:
+    <<: *text_color_base
+
+- id: oc-waterway-name
+  type: symbol
+  source: oceanus
+  source-layer: oc-waterway
+  minzoom: 6
+  filter:
+    - all
+    - - has
+      - name
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    <<: *text_layout_base
+    text-max-width: 5
+    text-rotation-alignment: map
+    symbol-placement: line
+    symbol-spacing: 350
+    text-letter-spacing: 0.2
+  paint:
+    <<: *text_color_base
+
+- id: oc-lake-ja
+  type: fill
+  source: oceanus
+  source-layer: oc-water
+  minzoom: 4
+  maxzoom: 8
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - lakes
+    - - has
+      - jflag
+  paint:
+    fill-color: *black_primary
+
+- id: oc-lake
+  type: fill
+  source: oceanus
+  source-layer: oc-water
+  minzoom: 4
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - lakes
+    - - ==
+      - - has
+        - jflag
+      - false
+  paint:
+    fill-color: *black_primary
+
+- id: oc-highway-outer-ja
+  type: line
+  source: oceanus
+  source-layer: oc-road
+  minzoom: 5
+  maxzoom: 8
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - highway
+    - - has
+      - jflag
+  layout:
+    line-cap: butt
+    line-join: round
+  paint:
+    line-color: *black_primary
+    line-opacity: 1
+    line-width:
+      base: 1.2
+      stops:
+        - - 8
+          - 1.5
+        - - 20
+          - 17
+
+- id: oc-highway-outer
+  type: line
+  source: oceanus
+  source-layer: oc-road
+  minzoom: 5
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - highway
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    line-cap: butt
+    line-join: round
+  paint:
+    line-color: *black_primary
+    line-opacity: 1
+    line-width:
+      base: 1.2
+      stops:
+        - - 8
+          - 1.5
+        - - 20
+          - 17
+
+- id: oc-highway-inner-ja
+  type: line
+  source: oceanus
+  source-layer: oc-road
+  minzoom: 5
+  maxzoom: 8
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - highway
+    - - has
+      - jflag
+  layout:
+    line-cap: round
+    line-join: round
+    visibility: none
+  paint:
+    line-color: red #'rgba(255, 255, 255, 1)'
+    line-width:
+      base: 1.2
+      stops:
+        - - 6.5
+          - 0
+        - - 8
+          - 0.5
+        - - 20
+          - 13
+- id: oc-highway-inner
+  type: line
+  source: oceanus
+  source-layer: oc-road
+  minzoom: 5
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - highway
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    line-cap: round
+    line-join: round
+    visibility: none
+  paint:
+    line-color: red #'rgba(255, 255, 255, 1)'
+    line-width:
+      base: 1.2
+      stops:
+        - - 6.5
+          - 0
+        - - 8
+          - 0.5
+        - - 20
+          - 13
+
+- id: oc-water-name-ocean
+  type: symbol
+  source: oceanus
+  source-layer: oc-water_name
+  filter:
+    - all
+    - - ==
+      - - geometry-type
+      - Point
+    - - ==
+      - - get
+        - class
+      - ocean
+  layout:
+    <<: *text_layout_base
+    text-max-width: 5
+    text-rotation-alignment: map
+    symbol-placement: point
+    symbol-spacing: 350
+    text-letter-spacing: 0.2
+  paint:
+    <<: *text_color_base
+- id: oc-water-name-other
+  type: symbol
+  source: oceanus
+  source-layer: oc-water
+  minzoom: 6
+  filter:
+    - all
+    - - ==
+      - - geometry-type
+      - Polygon
+    - - has
+      - name
+  layout:
+    <<: *text_layout_base
+    text-max-width: 5
+    text-rotation-alignment: map
+    symbol-placement: point
+    symbol-spacing: 350
+    text-letter-spacing: 0.2
+  paint:
+    <<: *text_color_base
+
+- id: nt-water-name-ocean
+  type: symbol
+  source: oceanus
+  source-layer: nt-water-name
+  minzoom: 8
+  filter:
+    - ==
+    - - get
+      - class
+    - ocean
+  layout:
+    <<: *text_layout_base
+    text-max-width: 5
+    text-rotation-alignment: map
+    symbol-placement: point
+    symbol-spacing: 350
+    text-letter-spacing: 0.2
+  paint:
+    <<: *text_color_base
+
+- id: nt-water-name-river
+  type: symbol
+  source: oceanus
+  source-layer: nt-water-name
+  minzoom: 13
+  filter:
+    - ==
+    - - get
+      - class
+    - river
+  layout:
+    <<: *text_layout_base
+    text-max-width: 5
+    text-rotation-alignment: map
+    symbol-placement: point
+    symbol-spacing: 350
+    text-letter-spacing: 0.2
+  paint:
+    <<: *text_color_base
+
+- id: oc-label-country
+  type: symbol
+  source: oceanus
+  source-layer: oc-label
+  maxzoom: 8
+  filter:
+    - ==
+    - - get
+      - class
+    - country
+  layout:
+    <<: *text_layout_base
+  paint:
+    <<: *text_color_base
+- id: oc-label-pref-ja
+  type: symbol
+  source: oceanus
+  source-layer: oc-label
+  minzoom: 5
+  maxzoom: 8
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - pref
+    - - has
+      - jflag
+  layout:
+    <<: *text_layout_base
+  paint:
+    <<: *text_color_base
+- id: oc-label-pref
+  type: symbol
+  source: oceanus
+  source-layer: oc-label
+  minzoom: 5
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - pref
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    <<: *text_layout_base
+  paint:
+    <<: *text_color_base
+- id: oc-label-town-ja
+  type: symbol
+  source: oceanus
+  source-layer: oc-label
+  minzoom: 7
+  maxzoom: 8
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - town
+    - - has
+      - jflag
+    - - ==
+      - - has
+        - pref-capital
+      - false
+  layout:
+    <<: *text_layout_base
+    icon-image: circle-11
+  paint:
+    <<: *text_color_base
+- id: oc-label-pref-capital-ja
+  type: symbol
+  source: oceanus
+  source-layer: oc-label
+  minzoom: 6
+  maxzoom: 8
+  filter:
+    - all
+    - - has
+      - jflag
+    - - has
+      - pref-capital
+  layout:
+    <<: *text_layout_base
+    icon-image: circle-11
+    icon-allow-overlap: true
+  paint:
+    <<: *text_color_base
+
+- id: oc-label-town
+  type: symbol
+  source: oceanus
+  source-layer: oc-label
+  minzoom: 6
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - town
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    <<: *text_layout_base
+    icon-image: circle-11
+  paint:
+    <<: *text_color_base
+
+- id: oc-airport
+  type: symbol
+  source: oceanus
+  source-layer: oc-airport
+  minzoom: 5
+  filter:
+    - all
+    - - ==
+      - - get
+        - class
+      - airport
+    - - ==
+      - - has
+        - jflag
+      - false
+  layout:
+    <<: *text_layout_base
+    icon-image: airport-11
+  paint:
+    <<: *text_color_base
+
 - id: landuse-commercial
   type: fill
   source: geolonia
@@ -166,22 +641,6 @@ layers:
       stops:
       - [13, 2]
       - [20, 6]
-- id: water-offset
-  type: fill
-  source: geolonia
-  source-layer: water
-  maxzoom: 8
-  filter: *isPolygon
-  layout:
-    visibility: none
-  paint:
-    fill-opacity: 1
-    fill-color: *black_primary
-    fill-translate:
-      base: 1
-      stops:
-      - [6, [2, 0]]
-      - [8, [0, 0]]
 - id: tunnel-railway
   type: line
   source: geolonia
@@ -288,6 +747,24 @@ layers:
       - [6.5, 0]
       - [7, 0.5]
       - [20, 18]
+- id: tunnel-motorway-casing
+  type: line
+  source: geolonia
+  source-layer: transportation
+  filter:
+  - all
+  - ["==", "brunnel", "tunnel"]
+  - ["==", "class", "motorway"]
+  layout:
+    line-join: round
+  paint:
+    line-color: *yellow_primary
+    line-width:
+      base: *line_width
+      stops:
+      - [6.5, 0]
+      - [7, 1.5]
+      - [20, 20]
 - id: tunnel-motorway
   type: line
   source: geolonia
@@ -298,7 +775,6 @@ layers:
   - ["==", "class", "motorway"]
   layout:
     line-join: round
-    visibility: visible
   paint:
     line-color: *other_line_color
     line-width:
@@ -329,8 +805,6 @@ layers:
   - all
   - *isPolygon
   - [in, class, runway, taxiway]
-  layout:
-    visibility: visible
   paint:
     fill-opacity:
       base: 1
@@ -350,7 +824,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: *black_primary
     line-width:
@@ -375,7 +848,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: *black_primary
     line-width:
@@ -393,8 +865,6 @@ layers:
   source: geolonia
   source-layer: transportation
   filter: *isPolygon
-  layout:
-    visibility: visible
   paint:
     fill-color: *other_area_color
     fill-opacity: 0.9
@@ -451,7 +921,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: "#fea"
     line-width:
@@ -495,7 +964,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: *black_primary
     line-width:
@@ -518,7 +986,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: *black_primary
     line-width:
@@ -540,7 +1007,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: rgba(0, 0, 0, 1)
     line-width:
@@ -563,7 +1029,6 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: visible
   paint:
     line-color: *black_primary
     line-width:
@@ -659,9 +1124,8 @@ layers:
   - ["==", class, motorway]
   layout:
     line-join: round
-    visibility: none
   paint:
-    line-color: rgba(153, 153, 153, 0.2)
+    line-color: *yellow_primary #rgba(153, 153, 153, 0.2)
     line-width:
       base: *line_width
       stops:
@@ -816,8 +1280,6 @@ layers:
   - all
   - ["==", class, rail]
   - ["!in", brunnel, tunnel]
-  layout:
-    visibility: visible
   paint:
     line-color: *black_primary
     line-width:
@@ -829,7 +1291,6 @@ layers:
   minzoom: 13
   filter: ["==", class, cable_car]
   layout:
-    visibility: visible
     line-cap: round
   paint:
     line-color: *black_primary
@@ -845,7 +1306,6 @@ layers:
   minzoom: 13
   filter: ["==", class, cable_car]
   layout:
-    visibility: visible
     line-cap: round
   paint:
     line-color: *black_primary
