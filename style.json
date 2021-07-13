@@ -391,11 +391,10 @@
       ],
       "layout": {
         "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
+        "line-join": "round"
       },
       "paint": {
-        "line-color": "red",
+        "line-color": "rgba(255, 255, 255, 1)",
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -442,11 +441,10 @@
       ],
       "layout": {
         "line-cap": "round",
-        "line-join": "round",
-        "visibility": "none"
+        "line-join": "round"
       },
       "paint": {
-        "line-color": "red",
+        "line-color": "rgba(255, 255, 255, 1)",
         "line-width": {
           "base": 1.2,
           "stops": [
@@ -883,7 +881,7 @@
         ]
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)"
+        "fill-color": "rgba(0, 0, 0, 0)"
       }
     },
     {
@@ -905,7 +903,7 @@
         ]
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)"
+        "fill-color": "rgba(0, 0, 0, 0)"
       }
     },
     {
@@ -919,7 +917,7 @@
         "Polygon"
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)"
+        "fill-color": "rgba(0, 0, 0, 0)"
       }
     },
     {
@@ -933,7 +931,7 @@
         "cemetery"
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)"
+        "fill-color": "rgba(0, 0, 0, 0)"
       }
     },
     {
@@ -947,7 +945,7 @@
         "hospital"
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)"
+        "fill-color": "rgba(0, 0, 0, 0)"
       }
     },
     {
@@ -961,7 +959,7 @@
         "school"
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)"
+        "fill-color": "rgba(0, 0, 0, 0)"
       }
     },
     {
@@ -1565,7 +1563,7 @@
         "Polygon"
       ],
       "paint": {
-        "fill-color": "rgba(0, 0, 0, 0.3)",
+        "fill-color": "rgba(0, 0, 0, 0)",
         "fill-opacity": 0.9,
         "fill-antialias": false
       }
@@ -2808,6 +2806,19 @@
         "text-color": "#ffdc00",
         "text-halo-color": "#000000",
         "text-halo-width": 10
+      }
+    },
+    {
+      "id": "building",
+      "type": "fill",
+      "source": "geolonia",
+      "source-layer": "building",
+      "minzoom": 15,
+      "paint": {
+        "fill-opacity": 1,
+        "fill-color": "#ffdc00",
+        "fill-outline-color": "#000000",
+        "fill-antialias": true
       }
     },
     {

@@ -16,7 +16,8 @@ __filters:
 __colors:
   - &yellow_primary '#ffdc00'
   - &black_primary '#000000'
-  - &other_area_color rgba(0, 0, 0, 0.3)
+  - &other_area_color rgba(0, 0, 0, 0)
+  - &building_color rgba(0, 0, 0, 0.5)
   - &other_line_color rgba(0, 0, 0, 0.5)
 
 __typography:
@@ -48,9 +49,7 @@ __icons:
   - &class-icon-11
     - coalesce
     - - image
-      - - concat
-        - [get, class]
-        - '-11'
+      - [concat, [get, class], '-11']
     - - image
       - circle-11
 
@@ -112,18 +111,9 @@ layers:
   minzoom: 4
   filter:
     - all
-    - - ==
-      - - get
-        - class
-      - river
-    - - '!='
-      - - get
-        - brunnel
-      - tunnel
-    - - ==
-      - - has
-        - jflag
-      - false
+    - [==, [get, class], river]
+    - ['!=', [get, brunnel], tunnel]
+    - [==, [has, jflag], false]
   layout:
     line-cap: round
   paint:
@@ -145,13 +135,9 @@ layers:
   maxzoom: 8
   filter:
     - all
-    - - ==
-      - $type
-      - LineString
-    - - has
-      - name
-    - - has
-      - jflag
+    - *isLineString
+    - [has, name]
+    - [has, jflag]
   layout:
     <<: *text_layout_base
     text-max-width: 5
@@ -169,12 +155,8 @@ layers:
   minzoom: 6
   filter:
     - all
-    - - has
-      - name
-    - - ==
-      - - has
-        - jflag
-      - false
+    - [has, name]
+    - [==, [has, jflag], false]
   layout:
     <<: *text_layout_base
     text-max-width: 5
@@ -193,12 +175,8 @@ layers:
   maxzoom: 8
   filter:
     - all
-    - - ==
-      - - get
-        - class
-      - lakes
-    - - has
-      - jflag
+    - [==, [get, class], lakes]
+    - [has, jflag]
   paint:
     fill-color: *black_primary
 
@@ -209,14 +187,8 @@ layers:
   minzoom: 4
   filter:
     - all
-    - - ==
-      - - get
-        - class
-      - lakes
-    - - ==
-      - - has
-        - jflag
-      - false
+    - [==, [get, class], lakes]
+    - [==, [has, jflag], false]
   paint:
     fill-color: *black_primary
 
@@ -294,9 +266,9 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: none
+    # visibility: none
   paint:
-    line-color: red #'rgba(255, 255, 255, 1)'
+    line-color: rgba(255, 255, 255, 1)
     line-width:
       base: 1.2
       stops:
@@ -324,9 +296,9 @@ layers:
   layout:
     line-cap: round
     line-join: round
-    visibility: none
+    # visibility: none
   paint:
-    line-color: red #'rgba(255, 255, 255, 1)'
+    line-color: rgba(255, 255, 255, 1)
     line-width:
       base: 1.2
       stops:
@@ -1385,6 +1357,18 @@ layers:
     text-letter-spacing: 0.2
   paint:
     <<: *text_color_base
+
+- id: building
+  type: fill
+  source: geolonia
+  source-layer: building
+  minzoom: 15
+  paint:
+    fill-opacity: 1
+    fill-color: *yellow_primary
+    fill-outline-color: *black_primary
+    fill-antialias: true
+
 - id: poi
   type: symbol
   source: geolonia
