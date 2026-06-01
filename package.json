@@ -24,8 +24,8 @@
   "devDependencies": {
     "chalk": "^4.1.1",
     "chokidar": "^3.5.2",
-    "js-yaml": "^4.1.0",
-    "webpack": "^5.42.1",
+    "js-yaml": "^4.1.1",
+    "webpack": "^5.104.1",
     "webpack-cli": "^4.7.2"
   }
 }
